@@ -1,0 +1,143 @@
+<%- include nav -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>新增預設值</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row" style="margin-top: 10%">
+            <div class="col">
+            </div> 
+            <div class="col-8">
+
+                    <form action="/adddefault" method="post" accept-charset="utf-8" onSubmit="return alertadd()" >
+                       
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">預設內徑</span>
+                                </div>
+                                <input type="text" id="Inside_diameter" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Inside_diameter" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">內徑正差</span>
+                                </div>
+                                <input type="text"id="Inside_diameter_positive" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Inside_diameter_positive" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">內徑負差</span>
+                                </div>
+                                <input type="text" id="Inside_diameter_negative" required="required" name="Inside_diameter_negative" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">預設長度</span>
+                                </div>
+                                <input type="text" id="Length" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Length" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">長度正差</span>
+                                </div>
+                                <input type="text" id="Length_positive" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Length_positive" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">長度負差</span>
+                                </div>
+                                <input type="text" id="Length_negative" required="required" name="Length_negative" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">預設厚度</span>
+                                </div>
+                                <input type="text" id="Thickness" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Thickness" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">厚度正差</span>
+                                </div>
+                                <input type="text" id="Thickness_positive" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Thickness_positive" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">厚度負差</span>
+                                </div>
+                                <input type="text" id="Thickness_negative" required="required" name="Thickness_negative" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">預設插口外徑</span>
+                                </div>
+                                <input type="text" id="Outer_diameter" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Outer_diameter" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">插口外徑正差</span>
+                                </div>
+                                <input type="text" id="Outer_diameter_positive" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Outer_diameter_positive" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div> 
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">插口外徑負差</span>
+                                </div>
+                                <input type="text" id="	Outer_diameter_negative" required="required" name="Outer_diameter_negative" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                        </div>  
+                     
+                        <div style="text-align:right;">
+                            <button type="reset" id="resetbtn" class="btn btn-primary">清除</button>
+                            <button type="submit" name="btnadd" class="btn btn-primary">新增資料</button>
+                            
+                        </div>
+                    </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="InputSpinner.js.js"></script>
+    <script>function alertadd(){
+        alert("新增成功")
+  	  	}
+    </script>
+    <script language="javascript">
+        var Today=new Date();
+        var localdate = Today.getFullYear()+"-"+(Today.getMonth()+1) +"-"+Today.getDate();
+        $("#date").val(localdate);
+        $("#update_date").val(localdate);
+    </script>
+</body>
+</html>

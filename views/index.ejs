@@ -1,0 +1,548 @@
+<%- include nav -%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>振添水泥銷售管理</title>
+  </head>
+  <body>
+
+
+
+    <div class="container-fluid">
+            <div class="row" style="margin-top: 10%">
+                <div class="col-1"></div>
+              <div class="col-10">
+
+                 <!-- search -->
+                    <div class="input-group">
+                      
+                            
+                            <select id="idsel" class="form-control" name="search">
+                                <option value="uid">UID</option>
+                                <option value="inside_diameter">內徑</option>
+                                <option value="length">長度</option>
+                                <option value="thickness">厚度</option>
+                            </select>
+                            <input type="text"  name="searchnum" class="form-control" aria-label="Text input with dropdown button">
+                            <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" name="searchbtn" type="button" id="button-addon2" onclick="Search();">查詢</button>
+                            </div>
+                    </div>
+                  </br>
+                    <!-- search -->
+
+
+                  <!-- table -->
+                   <!--  <div class="card">
+                        <div class="card-title pr">
+
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table student-data-table m-t-20" >
+                                    <thead>
+                                        <tr>
+                                            <th>UID</th>
+                                            <th>內徑</th>
+                                            <th>內徑差</th>
+                                            <th>長度</th>
+                                            <th>長度差</th>
+                                            <th>厚度</th>
+                                            <th>厚度差</th>
+                                            <th>插口外徑</th>
+                                            <th>插口外徑差</th>
+                                            <th>材質</th>
+                                            <th>鋼圈材質</th>
+                                            <th>鋼圈型式</th>
+                                            <th>新增日期</th>
+                                            <th>上次更新</th>
+                                            <th>修改</th>
+                                            <th>刪除</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                        <% for ( var i = 0 ; i < data.length ; i++){ %>
+                                          <tr>
+                                              <td>
+                                                  <%- data[i].UID  %>
+                                              </td>
+                                              <% if(data[i].Inside_diameter < 296){ %>
+                                                  <td  style="color:red;"><%- data[i].Inside_diameter %>&nbsp;mm <span class="badge badge-danger"><%- data[i].Inside_diameter - 296 %></span> </td>
+                                                  <%  } %>
+                                                  <% if(data[i].Inside_diameter >= 296){ %>
+                                                  <td><%- data[i].Inside_diameter %>&nbsp;mm </td>
+                                                  <%  } %>
+                                                  <td>
+                                        
+                                                      +4/-4
+                                                    
+                                                  </td>
+                                              <td>
+                                        
+                                                  <%- data[i].Length  %>&nbsp;mm
+                                                
+                                              </td>
+                                              <td>
+                                        
+                                                  +4/-4
+                                                
+                                              </td>
+                                              <td>
+                                                  <%- data[i].Thickness %>&nbsp;mm
+                                              </td>
+                                              <td>
+                                        
+                                                  +4/-4
+                                                
+                                              </td>
+                                              <td>
+                                                  <%- data[i].Outer_diameter %>&nbsp;mm
+                                              </td>
+                                              <td>
+                                        
+                                                  +4/-4
+                                                
+                                              </td>
+                                              <td>
+                                                  <%- data[i].Material %>
+                                              </td>
+                                              <td>
+                                                  <%- data[i].Steel_ring_material %>
+                                              </td>
+                                              <td>
+                                                  <%- data[i].Steel_ring_type %>
+                                              </td>
+                                              <td>
+                                                <%- data[i].date.toLocaleDateString() %>
+                                            </td>
+                                            <td>
+                                                <%- data[i].update_date.toLocaleDateString() %>
+                                            </td>
+                                              <td>
+                                                  <button type="button" name="edit" class="btn btn-outline-secondary btn-sm"  onclick="Edit('<%= data[i].UID  %>');" >編輯</button>
+                                                  
+                                              </td>
+                                              <td>
+                                                  <button type="button" name="delete" class="btn btn-outline-secondary btn-sm"  onclick="Delete('<%= data[i].UID  %>');" >刪除</button>
+                                              </td>
+                                          </tr>
+                                          <% } %>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>-->
+
+
+                    <div class="accordion" id="accordionExample">
+                      <div class="card">
+                        <div class="card-header" id="headingOne">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                鋼筋混凝土
+                            </button>
+                          </h2>
+                        </div>
+                    
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                          <div class="card-body">
+                             
+                                  <div class="card-title pr">
+          
+                                  </div>
+                                  <div class="card-body">
+                                      <div class="table-responsive">
+                                          <table class="table student-data-table m-t-20" >
+                                              <thead>
+                                                  <tr>
+                                                      <th>UID</th>
+                                                      <th>內徑</th>
+                                                      <th>內徑差</th>
+                                                      <th>長度</th>
+                                                      <th>長度差</th>
+                                                      <th>厚度</th>
+                                                      <th>厚度差</th>
+                                                      <th>插口外徑</th>
+                                                      <th>插口外徑差</th>
+                                                      <th>材質</th>
+                                                      <th>鋼圈材質</th>
+                                                      <th>鋼圈型式</th>
+                                                      <th>新增日期</th>
+                                                      <th>上次更新</th>
+                                                      <th>修改</th>
+                                                      <th>刪除</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                              
+                                                  <% for ( var i = 0 ; i < data.length ; i++){ %>
+                                                    <tr>
+                                                        <td>
+                                                            <%- data[i].UID  %>
+                                                        </td>
+                                                        <% if(data[i].Inside_diameter < 296){ %>
+                                                            <td  style="color:red;"><%- data[i].Inside_diameter %>&nbsp;mm <span class="badge badge-danger"><%- data[i].Inside_diameter - 296 %></span> </td>
+                                                            <%  } %>
+                                                            <% if(data[i].Inside_diameter >= 296){ %>
+                                                            <td><%- data[i].Inside_diameter %>&nbsp;mm </td>
+                                                            <%  } %>
+                                                            <td>
+                                                  
+                                                                +4/-4
+                                                              
+                                                            </td>
+                                                        <td>
+                                                  
+                                                            <%- data[i].Length  %>&nbsp;mm
+                                                          
+                                                        </td>
+                                                        <td>
+                                                  
+                                                            +4/-4
+                                                          
+                                                        </td>
+                                                        <td>
+                                                            <%- data[i].Thickness %>&nbsp;mm
+                                                        </td>
+                                                        <td>
+                                                  
+                                                            +4/-4
+                                                          
+                                                        </td>
+                                                        <td>
+                                                            <%- data[i].Outer_diameter %>&nbsp;mm
+                                                        </td>
+                                                        <td>
+                                                  
+                                                            +4/-4
+                                                          
+                                                        </td>
+                                                        <td>
+                                                            <%- data[i].Material %>
+                                                        </td>
+                                                        <td>
+                                                            <%- data[i].Steel_ring_material %>
+                                                        </td>
+                                                        <td>
+                                                            <%- data[i].Steel_ring_type %>
+                                                        </td>
+                                                        <td>
+                                                          <%- data[i].date.toLocaleDateString() %>
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].update_date.toLocaleDateString() %>
+                                                      </td>
+                                                        <td>
+                                                            <button type="button" name="edit" class="btn btn-outline-secondary btn-sm"  onclick="Edit('<%= data[i].UID  %>');" >編輯</button>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" name="delete" class="btn btn-outline-secondary btn-sm"  onclick="Delete('<%= data[i].UID  %>');" >刪除</button>
+                                                        </td>
+                                                    </tr>
+                                                    <% } %>
+                                                  
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  </div>
+                              </div> 
+                          
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-header" id="headingTwo">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              鋼筋混凝土預鑄人孔
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                          <div class="card-body">
+                              <div class="card-title pr">
+          
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table student-data-table m-t-20" >
+                                            <thead>
+                                                <tr>
+                                                    <th>UID</th>
+                                                    <th>內徑</th>
+                                                    <th>內徑差</th>
+                                                    <th>長度</th>
+                                                    <th>長度差</th>
+                                                    <th>厚度</th>
+                                                    <th>厚度差</th>
+                                                    <th>插口外徑</th>
+                                                    <th>插口外徑差</th>
+                                                    <th>材質</th>
+                                                    <th>鋼圈材質</th>
+                                                    <th>鋼圈型式</th>
+                                                    <th>新增日期</th>
+                                                    <th>上次更新</th>
+                                                    <th>修改</th>
+                                                    <th>刪除</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                                <% for ( var i = 0 ; i < data.length ; i++){ %>
+                                                  <tr>
+                                                      <td>
+                                                          <%- data[i].UID  %>
+                                                      </td>
+                                                      <% if(data[i].Inside_diameter < 296){ %>
+                                                          <td  style="color:red;"><%- data[i].Inside_diameter %>&nbsp;mm <span class="badge badge-danger"><%- data[i].Inside_diameter - 296 %></span> </td>
+                                                          <%  } %>
+                                                          <% if(data[i].Inside_diameter >= 296){ %>
+                                                          <td><%- data[i].Inside_diameter %>&nbsp;mm </td>
+                                                          <%  } %>
+                                                          <td>
+                                                
+                                                              +4/-4
+                                                            
+                                                          </td>
+                                                      <td>
+                                                
+                                                          <%- data[i].Length  %>&nbsp;mm
+                                                        
+                                                      </td>
+                                                      <td>
+                                                
+                                                          +4/-4
+                                                        
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Thickness %>&nbsp;mm
+                                                      </td>
+                                                      <td>
+                                                
+                                                          +4/-4
+                                                        
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Outer_diameter %>&nbsp;mm
+                                                      </td>
+                                                      <td>
+                                                
+                                                          +4/-4
+                                                        
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Material %>
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Steel_ring_material %>
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Steel_ring_type %>
+                                                      </td>
+                                                      <td>
+                                                        <%- data[i].date.toLocaleDateString() %>
+                                                    </td>
+                                                    <td>
+                                                        <%- data[i].update_date.toLocaleDateString() %>
+                                                    </td>
+                                                      <td>
+                                                          <button type="button" name="edit" class="btn btn-outline-secondary btn-sm"  onclick="Edit('<%= data[i].UID  %>');" >編輯</button>
+                                                          
+                                                      </td>
+                                                      <td>
+                                                          <button type="button" name="delete" class="btn btn-outline-secondary btn-sm"  onclick="Delete('<%= data[i].UID  %>');" >刪除</button>
+                                                      </td>
+                                                  </tr>
+                                                  <% } %>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--<div class="card">
+                        <div class="card-header" id="headingThree">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              Collapsible Group Item #3
+                            </button>
+                          </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                          <div class="card-body">
+                              <div class="card-title pr">
+          
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table student-data-table m-t-20" >
+                                            <thead>
+                                                <tr>
+                                                    <th>UID</th>
+                                                    <th>內徑</th>
+                                                    <th>內徑差</th>
+                                                    <th>長度</th>
+                                                    <th>長度差</th>
+                                                    <th>厚度</th>
+                                                    <th>厚度差</th>
+                                                    <th>插口外徑</th>
+                                                    <th>插口外徑差</th>
+                                                    <th>材質</th>
+                                                    <th>鋼圈材質</th>
+                                                    <th>鋼圈型式</th>
+                                                    <th>新增日期</th>
+                                                    <th>上次更新</th>
+                                                    <th>修改</th>
+                                                    <th>刪除</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                                <% for ( var i = 0 ; i < data.length ; i++){ %>
+                                                  <tr>
+                                                      <td>
+                                                          <%- data[i].UID  %>
+                                                      </td>
+                                                      <% if(data[i].Inside_diameter < 296){ %>
+                                                          <td  style="color:red;"><%- data[i].Inside_diameter %>&nbsp;mm <span class="badge badge-danger"><%- data[i].Inside_diameter - 296 %></span> </td>
+                                                          <%  } %>
+                                                          <% if(data[i].Inside_diameter >= 296){ %>
+                                                          <td><%- data[i].Inside_diameter %>&nbsp;mm </td>
+                                                          <%  } %>
+                                                          <td>
+                                                
+                                                              +4/-4
+                                                            
+                                                          </td>
+                                                      <td>
+                                                
+                                                          <%- data[i].Length  %>&nbsp;mm
+                                                        
+                                                      </td>
+                                                      <td>
+                                                
+                                                          +4/-4
+                                                        
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Thickness %>&nbsp;mm
+                                                      </td>
+                                                      <td>
+                                                
+                                                          +4/-4
+                                                        
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Outer_diameter %>&nbsp;mm
+                                                      </td>
+                                                      <td>
+                                                
+                                                          +4/-4
+                                                        
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Material %>
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Steel_ring_material %>
+                                                      </td>
+                                                      <td>
+                                                          <%- data[i].Steel_ring_type %>
+                                                      </td>
+                                                      <td>
+                                                        <%- data[i].date.toLocaleDateString() %>
+                                                    </td>
+                                                    <td>
+                                                        <%- data[i].update_date.toLocaleDateString() %>
+                                                    </td>
+                                                      <td>
+                                                          <button type="button" name="edit" class="btn btn-outline-secondary btn-sm"  onclick="Edit('<%= data[i].UID  %>');" >編輯</button>
+                                                          
+                                                      </td>
+                                                      <td>
+                                                          <button type="button" name="delete" class="btn btn-outline-secondary btn-sm"  onclick="Delete('<%= data[i].UID  %>');" >刪除</button>
+                                                      </td>
+                                                  </tr>
+                                                  <% } %>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div> 
+                          </div>
+                        </div>
+                      </div>-->
+                    </div>
+
+
+
+
+
+
+
+                    <!-- table -->
+
+                <div id="div1"></div>
+
+
+              </div>
+             
+            </div>
+          </div>
+
+
+    
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script>function Edit(UID) {
+        window.location.href = "/edit?UID=" + UID;
+      }
+    </script>
+    <script> function Delete(UID) {
+        var rs = confirm('確定要刪除?');
+        if (rs) {
+            window.location.href = "/delete?UID=" + UID;
+        }
+    }
+    </script>
+    <script> function Search() {
+        var search = document.getElementsByName('search')[0].value;
+        var num = document.getElementsByName('searchnum')[0].value;
+      if(search=="uid"){
+        window.location.href = "/?UID=" + num;;
+      }
+      else if(search=="inside_diameter"){
+        window.location.href = "/?Inside_diameter=" + num;;
+      }
+      else if(search=="length"){
+        window.location.href = "/?Length=" + num;;
+      }
+      else if(search=="thickness"){
+        window.location.href = "/?Thickness=" + num;;
+      }
+     
+    }
+    </script>
+    <script>
+     
+
+    </script>
+  </body>
+</html>

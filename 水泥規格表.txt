@@ -1,0 +1,8 @@
+內徑      Inside_diameter           INT
+長度      Length                    INT
+厚度      Thickness                 INT 
+插口外徑  Outer_diameter            INT
+材質      Material                  TEXT
+鋼圈材質  Steel_ring_material       TEXT
+鋼圈型式  Steel_ring_type           TEXT
+UID  	  UID   	 	    TEXT

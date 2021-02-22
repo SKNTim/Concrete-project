@@ -1,0 +1,115 @@
+<%- include nav -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>修改資料</title>
+</head>
+
+<body>
+
+    <div class="container">
+            <div class="row" style="margin-top: 10%">
+                <div class="col">
+                </div> 
+                <div class="col-8">
+                        <h1 align="center">UID&nbsp;:&nbsp;<%=data[0].UID %></h1></br>
+                        <form name="editform" action="/edit" method="post" accept-charset="utf-8" onSubmit="return show_alert()">
+                            <input type="hidden" name="UID" value="<%=data[0].UID %>" />
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">內徑</span>
+                                    </div>
+                                    <input type="text" required="required" value="<%=data[0].Inside_diameter %>" oninput="value=value.replace(/[^\d]/g,'')"  name="Inside_diameter" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">長度</span>
+                                    </div>
+                                    <!--<input type="text" required="required" value="<%=data[0].Length %>" oninput="value=value.replace(/[^\d]/g,'')"  name="Length" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"> -->
+                                    <select id="idsel" class="form-control" name="Length">
+                                            <optgroup selected="true" label="原本數值">
+                                            <option value="<%=data[0].Length %>"><%=data[0].Length %></option>
+                                            <optgroup selected="true" label="更改">
+                                            <option value="1010">1010</option>
+                                            <option value="1020">1020</option>
+                                            <option value="1030">1030</option>
+                                            <option value="1040">1040</option>
+                                            </select>
+                            
+                                </div>
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">厚度</span>
+                                    </div>
+                                    <input type="text" required="required" value="<%=data[0].Thickness %>" oninput="value=value.replace(/[^\d]/g,'')"  name="Thickness" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">插口外徑</span>
+                                    </div>
+                                    <input type="text" required="required" value="<%=data[0].Outer_diameter %>" oninput="value=value.replace(/[^\d]/g,'')"  name="Outer_diameter" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">材質</span>
+                                    </div>
+                                    <input type="text" required="required" value="<%=data[0].Material %>"   name="Material" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">鋼圈材質</span>
+                                    </div>
+                                    <input type="text" required="required" value="<%=data[0].Steel_ring_material %>"  name="Steel_ring_material" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">鋼圈型式</span>
+                                    </div>
+                                    <input type="text" required="required" value="<%=data[0].Steel_ring_type %>"  name="Steel_ring_type" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div>
+                                <input type="hidden" class="form-control" name="update_date" id="update_date" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div> 
+                                
+                         
+                            <div style="text-align:right;">
+                                <button type="button" value='Back' class="btn btn-primary" onclick="javascript: window.history.back();">返回</button>
+                                <button type="submit" class="btn btn-primary">修改資料</button>
+                                
+                            </div>
+                        </form>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            function show_alert()
+            {
+                alert("修改成功！")
+            }
+        </script>
+        <script language="javascript">
+                var Today=new Date();
+                var localdate = Today.getFullYear()+"-"+(Today.getMonth()+1) +"-"+Today.getDate();
+                $("#update_date").val(localdate);
+            </script>
+    </body>
+    
+    </html>

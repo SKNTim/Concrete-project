@@ -1,0 +1,2 @@
+±b¸¹   	user_name		TEXT
+±K½X	user_password           TEXT

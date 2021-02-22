@@ -1,0 +1,277 @@
+<%- include nav -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>新增資料</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row" style="margin-top: 10%">
+            <div class="col">
+            </div> 
+            <div class="col-8">
+
+                    <form action="/add" method="post" accept-charset="utf-8" onSubmit="return alertadd()" >
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">UID</span>
+                                </div>
+                                <input type="text" required="required"  name="UID" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                               
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">內徑</span>
+                                </div>
+                                <input type="text" id="Inside_diameter" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Inside_diameter" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                                <span class="input-group-text" id="Inside_diameter_default" style="width: 74px;height: 38px;"> 預設值</span>
+                                <span class="input-group-text" id="Inside_diameter_positive" style="width: 74px;height: 38px;">正差</span>
+                                <span class="input-group-text" id="Inside_diameter_negative" style="width: 74px;height: 38px;">負差</span>
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">長度</span>
+                                </div>
+                                <input type="text" id="Length" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Length" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                                <span class="input-group-text" id="Length_default"style="width: 74px;height: 38px;"> 預設值</span>
+                                <span class="input-group-text" id="Length_positive"style="width: 74px;height: 38px;">正差</span>
+                                <span class="input-group-text" id="Length_negative"style="width: 74px;height: 38px;">負差</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">厚度</span>
+                                </div>
+                                <input type="text" id="Thickness" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Thickness" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                                <span class="input-group-text" id="Thickness_default"style="width: 74px;height: 38px;"> 預設值</span>
+                                <span class="input-group-text" id="Thickness_positive"style="width: 74px;height: 38px;">正差</span>
+                                <span class="input-group-text" id="Thickness_negative"style="width: 74px;height: 38px;">負差</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">插口外徑</span>
+                                </div>
+                                <input type="text" id="Outer_diameter" required="required" oninput="value=value.replace(/[^\d]/g,'')"  name="Outer_diameter" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <span class="input-group-text"> mm</span>
+                                <span class="input-group-text" id="Outer_diameter_default"style="width: 74px;height: 38px;"> 預設值</span>
+                                <span class="input-group-text" id="Outer_diameter_positive"style="width: 74px;height: 38px;">正差</span>
+                                <span class="input-group-text" id="Outer_diameter_negative"style="width: 74px;height: 38px;">負差</span>
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">材質</span>
+                                </div>
+                                <input type="text" required="required"   name="Material" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">鋼圈材質</span>
+                                </div>
+                                <input type="text" required="required"  name="Steel_ring_material" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">鋼圈型式</span>
+                                </div>
+                                <input type="text" required="required"  name="Steel_ring_type" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                
+                        <div>
+                                <input type="hidden" class="form-control" name="date"  id="date" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div>
+                                <input type="hidden" class="form-control" name="update_date" id="update_date" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>  
+                     
+                        <div style="text-align:right;">
+                            <button type="reset" id="resetbtn" class="btn btn-primary">清除</button>
+                            <button type="submit" name="btnadd" class="btn btn-primary">新增資料</button>
+                            
+                        </div>
+                    </form>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script>function alertadd(){
+        alert("新增成功")
+  	  	}
+    </script>
+    <script language="javascript">
+        var Today=new Date();
+        var localdate = Today.getFullYear()+"-"+(Today.getMonth()+1) +"-"+Today.getDate();
+        $("#date").val(localdate);
+        $("#update_date").val(localdate);
+    </script>
+<script>
+        var docnull = "";
+        $.getJSON("/datarange", function(json){
+                data_range_300 = json.datarange[0];
+                data_range_1000 = json.datarange[1];
+        });
+        
+        $(document).ready(function(){
+             
+        $("#Inside_diameter").keyup(function(){
+        /*$("#Inside_diameter").css("background-color","#D6D6FF");*/
+        if(document.getElementsByName('Inside_diameter')[0].value < 401 && document.getElementsByName('Inside_diameter')[0].value > 201){
+                if(document.getElementsByName('Inside_diameter')[0].value > 300 || document.getElementsByName('Inside_diameter')[0].value < 296){
+                        $("#Inside_diameter").css("color","red");
+                }
+            $("#Inside_diameter_default").html(data_range_300.Inside_diameter);
+            $("#Inside_diameter_positive").html(data_range_300.Inside_diameter_positive);
+            $("#Inside_diameter_negative").html(data_range_300.Inside_diameter_negative);
+
+            $("#Length").val(data_range_300.Length); 
+            $("#Length_default").html(data_range_300.Length);
+            $("#Length_positive").html(data_range_300.Length_positive);
+            $("#Length_negative").html(data_range_300.Length_negative);
+
+            $("#Thickness").val(data_range_300.Thickness); 
+            $("#Thickness_default").html(data_range_300.Thickness);
+            $("#Thickness_positive").html(data_range_300.Thickness_positive);
+            $("#Thickness_negative").html(data_range_300.Thickness_negative);
+
+            $("#Outer_diameter").val(data_range_300.Outer_diameter); 
+            $("#Outer_diameter_default").html(data_range_300.Outer_diameter);
+            $("#Outer_diameter_positive").html(data_range_300.Outer_diameter_positive);
+            $("#Outer_diameter_negative").html(data_range_300.Outer_diameter_negative);
+
+            
+                
+            }
+        if(document.getElementsByName('Inside_diameter')[0].value < 1101 && document.getElementsByName('Inside_diameter')[0].value > 901){
+            if(document.getElementsByName('Inside_diameter')[0].value > 1000 || document.getElementsByName('Inside_diameter')[0].value < 994){
+                    //$("#Inside_diameter").css("background-color","red"); 
+                    $("#Inside_diameter").css("color","red"); 
+                }
+            $("#Inside_diameter_default").html(data_range_1000.Inside_diameter);
+            $("#Inside_diameter_positive").html(data_range_1000.Inside_diameter_positive);
+            $("#Inside_diameter_negative").html(data_range_1000.Inside_diameter_negative);
+            
+            $("#Length").val(data_range_1000.Length); 
+            $("#Length_default").html(data_range_1000.Length);
+            $("#Length_positive").html(data_range_1000.Length_positive);
+            $("#Length_negative").html(data_range_1000.Length_negative);
+
+            $("#Thickness").val(data_range_1000.Thickness); 
+            $("#Thickness_default").html(data_range_1000.Thickness);
+            $("#Thickness_positive").html(data_range_1000.Thickness_positive);
+            $("#Thickness_negative").html(data_range_1000.Thickness_negative);
+
+            $("#Outer_diameter").val(data_range_1000.Outer_diameter); 
+            $("#Outer_diameter_default").html(data_range_1000.Outer_diameter);
+            $("#Outer_diameter_positive").html(data_range_1000.Outer_diameter_positive);
+            $("#Outer_diameter_negative").html(data_range_1000.Outer_diameter_negative);
+            }
+        if(document.getElementsByName('Inside_diameter')[0].value == docnull){
+            $("#Inside_diameter").css("color","black"); 
+            $("#Inside_diameter_default").html("預設值");
+            $("#Inside_diameter_positive").html("正差");
+            $("#Inside_diameter_negative").html("負差");
+            }
+            });   
+        });
+</script>
+
+<script>
+        var docnull = "";
+        $(document).ready(function(){
+             
+        $("#Length").keyup(function(){
+        /*$("#Inside_diameter").css("background-color","#D6D6FF");*/
+        if(document.getElementsByName('Length')[0].value < 1101 && document.getElementsByName('Length')[0].value > 901){
+            if(document.getElementsByName('Length')[0].value > 1010 || document.getElementsByName('Length')[0].value < 995){
+                    //$("#Inside_diameter").css("background-color","red"); 
+                    $("#Length").css("color","red");
+                }
+            $("#Length_default").html(data_range_300.Length);
+            $("#Length_positive").html(data_range_300.Length_positive);
+            $("#Length_negative").html(data_range_300.Length_negative);
+            }
+        if(document.getElementsByName('Length')[0].value == docnull){
+            $("#Length").css("color","black"); 
+            $("#Length_default").html("預設值");
+            $("#Length_positive").html("正差");
+            $("#Length_negative").html("負差");
+            }
+            });   
+        });
+</script>
+
+<script>
+        var docnull = "";
+        $(document).ready(function(){
+                     
+        $("#Thickness").keyup(function(){
+        /*$("#Inside_diameter").css("background-color","#D6D6FF");*/
+        if(document.getElementsByName('Thickness')[0].value < 76 && document.getElementsByName('Thickness')[0].value > 55){
+                if(document.getElementsByName('Thickness')[0].value > 69 || document.getElementsByName('Thickness')[0].value < 63){
+                //$("#Inside_diameter").css("background-color","red"); 
+                        $("#Thickness").css("color","red");
+                }
+                $("#Thickness_default").html(data_range_300.Thickness);
+                $("#Thickness_positive").html(data_range_300.Thickness_positive);
+                $("#Thickness_negative").html(data_range_300.Thickness_negative);
+                }
+        if(document.getElementsByName('Thickness')[0].value == docnull){
+                $("#Thickness").css("color","black"); 
+                $("#Thickness_default").html("預設值");
+                $("#Thickness_positive").html("正差");
+                $("#Thickness_negative").html("負差");
+                }
+                });   
+        });
+</script>
+
+<script>
+                $(document).ready(function(){
+                        $("#resetbtn").click(function(){
+                                $("#Inside_diameter").css("color","black"); 
+                                $("#Inside_diameter_default").html("預設值");
+                                $("#Inside_diameter_positive").html("正差");
+                                $("#Inside_diameter_negative").html("負差");
+
+                                $("#Length").css("color","black"); 
+                                $("#Length_default").html("預設值");
+                                $("#Length_positive").html("正差");
+                                $("#Length_negative").html("負差");
+
+                                $("#Thickness").css("color","black"); 
+                                $("#Thickness_default").html("預設值");
+                                $("#Thickness_positive").html("正差");
+                                $("#Thickness_negative").html("負差");
+
+                                $("#Outer_diameter").css("color","black"); 
+                                $("#Outer_diameter_default").html("預設值");
+                                $("#Outer_diameter_positive").html("正差");
+                                $("#Outer_diameter_negative").html("負差");
+
+
+                        });
+                });
+</script>
+</body>
+</html>
